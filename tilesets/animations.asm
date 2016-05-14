@@ -1348,54 +1348,24 @@ PokeComCenter_FlickerScreen:
 	push af
 	ld a, 1
 	ld [rVBK], a
-	ld a, [rSVBK]
-	push af
-	ld a, $6
-	ld [rSVBK], a
 
-	ld a, 0
-	call .Write
-
-	ld hl, $d000
-	ld c, $20
+	ld hl, $90e0
+	ld a, $20
 .loop
-	ld a, [hl]
-	bit 0, c
+	push af
+	and 1
 	jr z, .left
-	rrca
-	jr .rotated
+	rrc [hl]
+	jr .okay
 
 .left
-	rlca
-.rotated
-	ld [hli], a
-	dec c
+	rlc [hl]
+.okay
+	inc hl
+	pop af
+	dec a
 	jr nz, .loop
 
-	ld a, 1
-	call .Write
-
-	pop af
-	ld [rSVBK], a
 	pop af
 	ld [rVBK], a
 	ret
-
-.Write
-	ld hl, [sp+0]
-	ld b, h
-	ld c, l
-
-	and a
-	jr nz, .pop1
-	ld hl, $90e0
-	ld sp, hl
-	ld hl, $d000
-	jp WriteTile
-	
-.pop1
-	ld hl, $d000
-	ld sp, hl
-	ld hl, $90e0
-	jp WriteTile
-

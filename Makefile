@@ -49,15 +49,15 @@ clean:
 %.asm: ;
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
-%.o: %.asm $$(%dep)
+%.o: %.asm $$(dep)
 	rgbasm -o $@ $<
 
 %_ai.o: dep = $(shell $(includes) $(@D)/$*.asm)
-%_ai.o: %.asm $$(%dep)
+%_ai.o: %.asm $$(dep)
 	rgbasm -D BEESAFREE -o $@ $<
 
 %11.o: dep = $(shell $(includes) $(@D)/$*.asm)
-%11.o: %.asm $$(%dep)
+%11.o: %.asm $$(dep)
 	rgbasm -D CRYSTAL11 -o $@ $<
 
 %.ips: %.gbc
