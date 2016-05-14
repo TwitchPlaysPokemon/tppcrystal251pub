@@ -1,0 +1,15 @@
+BackpicRed:
+	RGB 25, 18, 12
+	RGB 22, 09, 05
+BackpicBlue:
+	RGB 25, 18, 12
+	RGB 07, 05, 31
+BackpicGreen:
+	RGB 25, 18, 12
+	RGB 13, 21, 06
+BackpicBrown:
+	RGB 25, 18, 12
+	RGB 20, 15, 03
+BackpicYellow:
+	RGB 25, 18, 12
+	RGB 31, 27, 06

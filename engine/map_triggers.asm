@@ -1,0 +1,128 @@
+MapTriggers:: ; 4d01e
+; Map triggers
+
+trigger_def: MACRO
+; db group, map
+; dw address
+	map \1
+	dw \2
+ENDM
+	; Johto link center triggers
+	trigger_def POKECENTER_2F,                          wPokecenter2FTrigger
+	trigger_def TRADE_CENTER,                           wTradeCenterTrigger
+	trigger_def COLOSSEUM,                              wColosseumTrigger
+	trigger_def TIME_CAPSULE,                           wTimeCapsuleTrigger
+	; Kanto link center triggers will share addresses with johto's triggers
+	trigger_def POKECENTER_2F_KANTO,                    wPokecenter2FTrigger
+	trigger_def TRADE_CENTER_KANTO,                     wTradeCenterTrigger
+	trigger_def COLOSSEUM_KANTO,                        wColosseumTrigger
+	trigger_def TIME_CAPSULE_KANTO,                     wTimeCapsuleTrigger
+	; these triggers do not share addresses
+	trigger_def POWER_PLANT,                            wPowerPlantTrigger
+	trigger_def CERULEAN_GYM,                           wCeruleanGymTrigger
+	trigger_def ROUTE_25,                               wRoute25Trigger
+	trigger_def TRAINER_HOUSE_B1F,                      wTrainerHouseB1FTrigger
+	trigger_def VICTORY_ROAD_GATE,                      wVictoryRoadGateTrigger
+	trigger_def SAFFRON_TRAIN_STATION,                  wSaffronTrainStationTrigger
+	trigger_def ROUTE_16_GATE,                          wRoute16GateTrigger
+	trigger_def ROUTE_17_18_GATE,                       wRoute1718GateTrigger
+	trigger_def INDIGO_PLATEAU_POKECENTER_1F,           wIndigoPlateauPokecenter1FTrigger
+	trigger_def WILLS_ROOM,                             wWillsRoomTrigger
+	trigger_def KOGAS_ROOM,                             wKogasRoomTrigger
+	trigger_def BRUNOS_ROOM,                            wBrunosRoomTrigger
+	trigger_def KARENS_ROOM,                            wKarensRoomTrigger
+	trigger_def LANCES_ROOM,                            wLancesRoomTrigger
+	trigger_def HALL_OF_FAME,                           wHallOfFameTrigger
+	trigger_def ROUTE_27,                               wRoute27Trigger
+	trigger_def NEW_BARK_TOWN,                          wNewBarkTownTrigger
+	trigger_def ELMS_LAB,                               wElmsLabTrigger
+	trigger_def REDS_HOUSE_1F_RB,                       wRedsHouse1FRBTrigger
+	trigger_def ROUTE_29,                               wRoute29Trigger
+	trigger_def CHERRYGROVE_CITY,                       wCherrygroveCityTrigger
+	trigger_def MR_POKEMONS_HOUSE,                      wMrPokemonsHouseTrigger
+	trigger_def ROUTE_32,                               wRoute32Trigger
+	trigger_def ROUTE_35_NATIONAL_PARK_GATE,            wRoute35NationalParkGateTrigger
+	trigger_def ROUTE_36,                               wRoute36Trigger
+	trigger_def ROUTE_36_NATIONAL_PARK_GATE,            wRoute36NationalParkGateTrigger
+	trigger_def AZALEA_TOWN,                            wAzaleaTownTrigger
+	trigger_def GOLDENROD_GYM,                          wGoldenrodGymTrigger
+	trigger_def GOLDENROD_MAGNET_TRAIN_STATION,         wGoldenrodMagnetTrainStationTrigger
+	trigger_def GOLDENROD_POKECENTER_1F,                wGoldenrodPokecenter1FTrigger
+	trigger_def OLIVINE_CITY,                           wOlivineCityTrigger
+	trigger_def ROUTE_34,                               wRoute34Trigger
+	trigger_def ROUTE_34_ILEX_FOREST_GATE,              wRoute34IlexForestGateTrigger
+	trigger_def ECRUTEAK_HOUSE,                         wEcruteakHouseTrigger
+	trigger_def WISE_TRIOS_ROOM,                        wWiseTriosRoomTrigger
+	trigger_def ECRUTEAK_POKECENTER_1F,                 wEcruteakPokecenter1FTrigger
+	trigger_def ECRUTEAK_GYM,                           wEcruteakGymTrigger
+	trigger_def MAHOGANY_TOWN,                          wMahoganyTownTrigger
+	trigger_def ROUTE_42,                               wRoute42Trigger
+	trigger_def CIANWOOD_CITY,                          wCianwoodCityTrigger
+	trigger_def BATTLE_TOWER_1F,                        wBattleTower1FTrigger
+	trigger_def BATTLE_TOWER_BATTLE_ROOM,               wBattleTowerBattleRoomTrigger
+	trigger_def BATTLE_TOWER_ELEVATOR,                  wBattleTowerElevatorTrigger
+	trigger_def BATTLE_TOWER_HALLWAY,                   wBattleTowerHallwayTrigger
+	trigger_def BATTLE_TOWER_OUTSIDE,                   wBattleTowerOutsideTrigger
+	trigger_def ROUTE_43_GATE,                          wRoute43GateTrigger
+	trigger_def MT_MOON_B1F,                            wMountMoonTrigger
+	trigger_def SPROUT_TOWER_3F,                        wSproutTower3FTrigger
+	trigger_def TIN_TOWER_1F,                           wTinTower1FTrigger
+	trigger_def BURNED_TOWER_1F,                        wBurnedTower1FTrigger
+	trigger_def BURNED_TOWER_B1F,                       wBurnedTowerB1FTrigger
+	trigger_def RADIO_TOWER_5F,                         wRadioTower5FTrigger
+	trigger_def RUINS_OF_ALPH_OUTSIDE,                  wRuinsOfAlphOutsideTrigger
+	trigger_def RUINS_OF_ALPH_RESEARCH_CENTER,          wRuinsOfAlphResearchCenterTrigger
+	trigger_def RUINS_OF_ALPH_HO_OH_CHAMBER,            wRuinsOfAlphHoOhChamberTrigger
+	trigger_def RUINS_OF_ALPH_KABUTO_CHAMBER,           wRuinsOfAlphKabutoChamberTrigger
+	trigger_def RUINS_OF_ALPH_OMANYTE_CHAMBER,          wRuinsOfAlphOmanyteChamberTrigger
+	trigger_def RUINS_OF_ALPH_AERODACTYL_CHAMBER,       wRuinsOfAlphAerodactylChamberTrigger
+	trigger_def RUINS_OF_ALPH_INNER_CHAMBER,            wRuinsOfAlphInnerChamberTrigger
+	trigger_def MAHOGANY_MART_1F,                       wMahoganyMart1FTrigger
+	trigger_def TEAM_ROCKET_BASE_B1F,                   wTeamRocketBaseB1FTrigger
+	trigger_def TEAM_ROCKET_BASE_B2F,                   wTeamRocketBaseB2FTrigger
+	trigger_def TEAM_ROCKET_BASE_B3F,                   wTeamRocketBaseB3FTrigger
+	trigger_def UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, wUndergroundPathSwitchRoomEntrancesTrigger
+	trigger_def SILVER_CAVE_OUTSIDE,                    wSilverCaveOutsideTrigger
+	trigger_def VICTORY_ROAD,                           wVictoryRoadTrigger
+	trigger_def DRAGONS_DEN_B1F,                        wDragonsDenB1FTrigger
+	trigger_def DRAGON_SHRINE,                          wDragonShrineTrigger
+	trigger_def OLIVINE_PORT,                           wOlivinePortTrigger
+	trigger_def VERMILION_PORT,                         wVermilionPortTrigger
+	trigger_def FAST_SHIP_1F,                           wFastShip1FTrigger
+	trigger_def FAST_SHIP_B1F,                          wFastShipB1FTrigger
+	trigger_def MOUNT_MOON_SQUARE,                      wMountMoonSquareTrigger
+	trigger_def BATTLE_TENT_BATTLE_ROOM,                wBattleTentBattleRoomTrigger
+	trigger_def VERMILION_CITY,                         wVermilionCityTrigger
+	trigger_def ROCKET_HIDEOUT_1,                       wRocketHideout1Trigger
+	trigger_def UNDERGROUND_WAREHOUSE,                  wUndergroundWarehouseTrigger
+	trigger_def AZALEA_GYM,                             wAzaleaGymTrigger
+	trigger_def OLIVINE_LIGHTHOUSE_1F,                  wOlivineLighthouse1FTrigger
+	trigger_def CINNABAR_VOLCANO_B2F,                   wCinnabarVolcanoB2FTrigger
+	trigger_def ROCKET_HIDEOUT_2,                       wRocketHideout2Trigger
+	trigger_def ROCKET_HIDEOUT_3,                       wRocketHideout3Trigger
+	trigger_def TOHJO_FALLS_BACK_ROOM,                  wTohjoFallsBackRoomTrigger
+	trigger_def DUMMY_BLANK_MAP,                        wDummyBlankMapTrigger
+	trigger_def PALLET_TOWN_RB,                         wPalletTownRBTrigger
+	trigger_def OAKS_LAB_RB,                            wOaksLabRBTrigger
+	trigger_def VIRIDIAN_CITY_RB,                       wViridianCityRBTrigger
+	trigger_def VIRIDIAN_MART_RB,                       wViridianMartRBTrigger
+	trigger_def ROUTE_22_RB,                            wRoute22RBTrigger
+	trigger_def VICTORY_ROAD_GATE_RB,                   wVictoryRoadGateRBTrigger
+	trigger_def ROUTE_23_RB,                            wRoute23RBTrigger
+	trigger_def PEWTER_CITY_RB,                         wPewterCityRBTrigger
+	trigger_def PEWTER_MUSEUM_1F_RB,                    wPewterMuseum1FRBTrigger
+	trigger_def CERULEAN_CITY_RB,                       wCeruleanCityRBTrigger
+	trigger_def ROUTE_24_RB,                            wRoute24RBTrigger
+	trigger_def ROUTE_5_SAFFRON_CITY_GATE_RB,           wRoute5SaffronGateRBTrigger
+	trigger_def ROUTE_6_SAFFRON_GATE_RB,                wRoute6SaffronGateRBTrigger
+	trigger_def VERMILION_CITY_RB,                      wVermilionCityRBTrigger
+	trigger_def S_S_ANNE_1,                             wSSAnne1Trigger
+	trigger_def S_S_ANNE_2,                             wSSAnne2Trigger
+	trigger_def S_S_ANNE_3,                             wSSAnne3Trigger
+	trigger_def S_S_ANNE_5,                             wSSAnne5Trigger
+	trigger_def KRISS_HOUSE_1F,                         wKrissHouse1FTrigger
+	trigger_def HALLWAY_OF_FAME,                        wHallwayOfFameTrigger
+	trigger_def LAVENDER_TOWN,                          wLavenderTownTrigger
+	trigger_def VERMILION_GYM_2,                        wVermilionGym2Trigger
+	db $ff
+; 4d15b

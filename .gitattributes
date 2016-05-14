@@ -1,0 +1,23 @@
+# No monkey business with line endings
+* text eol=lf
+
+*.asm -text
+*.pal -text
+*.bat eol=crlf
+
+# hexdump binary files
+*.png  binary diff=hex
+*.lz   binary diff=hex
+*.2bpp binary diff=hex
+*.1bpp binary diff=hex
+*.bin  binary diff=hex
+*.blk  binary diff=hex
+*.dll  binary diff=hex
+*.it   binary diff=hex
+
+# other files that were causing problems
+*.gbc  binary
+*.it   binary
+*.db   binary
+*.tilemap binary
+*.ips binary

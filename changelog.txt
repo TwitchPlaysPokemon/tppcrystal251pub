@@ -1,0 +1,85 @@
+Version 1.2
+* Remove OLDEN from the Pokemon Quiz Show
+* More text fixes
+* More party menu icons
+* Moved an NPC on Route 4 to correct some visual errors
+* You can no longer white out due to overworld poison damage (Gen 4 style)
+* Fix the Name Rater bug
+* Fix SS Ticket displaying the name of the wrong ship in Early Game Kanto
+* Add a custom logo to the startup sequence
+* Fix a bug where the Rooftop Sale prices were interpreted wrong
+* Actually fix: You can no longer receive phone calls prior to actually getting the phone card
+* Clarify Simon in the volcano
+* MASSIVE movepool update
+* Fixed the moveset of the dragon shrine dratini
+* Fixed bug causing stats to not be properly recalculated for caught mons (levelling up or performing the box trick ends this glitch too)
+* Fixed a bug causing wild mons to not benefit from DVs
+* Fixed issue with Moltres replacing many overworld birds
+* Removed kanto mons from rock smash mon tables
+* Apply a different check for the TM Depot elevator
+* Remakes of the original Kanto Pokemon Centers now replace all centers in EGK and normal Kanto
+* Opened up a BOUTIQUE in Goldenrod to allow the player to change their player model's colors. Stay fresh!
+* Different checks for overworld music resuming
+* Misc other fixes
+
+Version 1.1.2
+* Grammar fixes
+* Nerf the Raticate on the Rocket Executive in Mt Moon
+* Nerf trainers in Morty's Gym
+* Nerf an Executive in the Mahogany Base
+* Revert random naming screen cursor initialization
+* Restore start button functionality on the naming screen
+* Restore NEW GAME option if you already have a save file
+* Fix bug where pressing A or B in instant text speed mode would slow the text down
+* Fix a glitch where dex entries that differ between metric and imperial units would be loaded incorrectly in radio programs
+* Fix rival not despawning on Route 22 if you've already beaten Brock
+* Fix some color-related glitches when talking to Whitney or Janine for rematches
+* Fix Unown words in Ruins of Alph sourcing the wrong tiles
+* Fix fourth stats screen displaying the wrong caught time-of-day
+* The lights in the Battle Tent Generator Room now turn on as soon as you activate the generator
+* Lights in the abandoned Rocket Hideout now behave correctly
+* Possible fix for a glitch in the external AI where a foe with no usable moves would freeze the game
+* Fix incorrect text pointer on SS Anne
+* Fix Azure/Rust standing in Cerulean City, waiting for the player, in full view of the player
+* Dummied out useless branching TM mart
+* Custom party menu icons
+* Raikou's overworld sprite is yellow now
+* Fix a bug where the stock AI would favor stat-lowering moves while the player has Mist or Guard Spec. up
+* Fix a bug where wild Moltres, Articuno, Zapdos, Mewtwo, and Mew are not forced to hold their respective items when encountered
+* Wild Meowth now has a 25% chance of holding an Amulet Coin
+* Updated Psywave to deal between (0.5 * level) and (1.5 * level) damage
+* Added Rock Smash to a new house in Cianwood; removed it from Goldenrod Mart
+* Added Repels to Viridian and Pewter Marts in Early Game Kanto; also added X-Speed to Pewter Mart
+* Pay Day now gives (5 * level) money per use (up from (2 * level))
+* Flash and Fly have swapped locations and activation badges, meaning you get Fly and can use it as soon as Violet City
+  - Existing files that have completed Sprout Tower and recieved Flash can get Fly from Cianwood as normal
+* A boulder now exists in Dark Cave to stop the player from getting to Route 46 early and fighting higher-level trainers sooner than intended
+* Restructured the Hitmon-line's level-up movepool
+* Chansey gets Mimic as an Egg move
+* Zubat now gets Leech Life at level 9 and Mega Drain at level 1
+* Mankey now learns Encore at level 15, with Metronome becoming an Egg move
+* Poliwag now learns Mimic at level 15, and Poliwhirl now gets it at level 1, with Metronome becoming an Egg move
+* Geodude now learns Bide at level 6, with Metronome becoming an Egg move
+* Drowzee now learns Safeguard at level 3, and hypno now gets it at level 1, with Metronome becoming an Egg move
+* Grimer got a movelearn reshuffle:
+  - Level  4: Acid
+  - Level  8: Lick
+  - Level 12: Mega Drain
+  - Level 15: Disable
+  - Level 18: Sludge
+  - Level 21: Mean Look
+* Fix glitches with the Bug Catching Contest
+* Fix bug where BILL's PC is referenced before helping Bill when sending a caught Pokemon to the PC
+* The game now tells you to which box your newly-caught Pokemon was sent
+
+Version 1.1.1
+* Grammar fixes
+* Fixed some crashes with the AI server scripts
+* Remove faulty callback in the Battle Tent Battle Room
+* Remove product placement from the Pewter Museum of Science
+* Fix Pokegear clock not updating in AI build
+* You can no longer receive phone calls prior to actually getting the phone card
+* Updated title from "CRYSTAL ANNIVERSARY" to "ANNIVERSARY CRYSTAL"
+
+Version 1.1.0
+* Initial release
