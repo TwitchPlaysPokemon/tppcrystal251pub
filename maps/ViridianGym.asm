@@ -398,7 +398,7 @@ ViridianGymGuyWinText: ; 0x9ada0
 	line "inspirational"
 	cont "battle!"
 	
-	para "it brought tears"
+	para "It brought tears"
 	line "to my eyes!"
 	done
 ; 0x9ae04

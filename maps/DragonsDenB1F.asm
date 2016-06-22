@@ -373,12 +373,12 @@ UnknownText_0x18ca0d: ; 0x18ca0d
 	line "DRAGON PULSE."
 
 	para "It fires a huge"
-	line "energy of some"
-	cont "kind"
+	line "energy blast of"
+	cont "some kind."
 
 	para "If you don't want"
 	line "it, you don't have"
-	cont "to take it."
+	cont "to take it<...>"
 	done
 ; 0x18ca8b
 

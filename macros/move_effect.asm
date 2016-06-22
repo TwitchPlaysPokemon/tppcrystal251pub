@@ -172,7 +172,7 @@ endm
 	command effect0xa5
 	command effect0xa6
 	command effect0xa7
-	command effect0xa8
+	command checkbeatup
 	command clearmissdamage
 	command movedelay
 	command hittarget

@@ -44,8 +44,9 @@ InvisibleJanineScript:
 	startbattle
 	returnafterbattle
 	setevent EVENT_JANINE_REMATCH
-	appear $3
-	appear $4
+	clearevent EVENT_FAKE_JANINE_1
+	clearevent EVENT_FAKE_JANINE_2
+	special Function1ad2
 	loadfont ;fallthrough
 	jump JanineJustAfterRematch
 

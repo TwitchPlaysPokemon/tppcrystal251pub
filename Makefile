@@ -38,15 +38,14 @@ crystal: pokecrystal.gbc
 crystal11: pokecrystal11.gbc
 beesafree: pokecrystal_ai.gbc
 patches: ipspatch pokecrystal11.ips pokecrystal_ai.ips
-ipspatch:
-	cd ipspatch; \
-	gcc -O3 -Wno-unused-result ipspatch.c -o ipspatch; \
-	cd ../..
+ipspatch: ipspatch/ipspatch.exe
 
 clean:
 	rm -f $(roms) $(all_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) $(roms:.gbc=.ips)
 
 %.asm: ;
+%.txt: ;
+%.c: ;
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
@@ -75,10 +74,12 @@ pokecrystal_ai.gbc: $(beesafree_obj)
 	rgblink -n pokecrystal_ai.sym -m pokecrystal_ai.map -o $@ $^
 	rgbfix -Cjv -i BORT -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t TPPCRYSTAL $@
 
-%.png: ;
+%.exe: %.c
+	gcc -O3 -Wno-unused-result $< -o $@
+
 %.2bpp: %.png ; $(gfx) 2bpp $<
 %.1bpp: %.png ; $(gfx) 1bpp $<
-%.lz: % ; $(gfx) lz $<
+#%.lz:   %     ; $(gfx) lz $<
 
 
 %.pal: %.2bpp ;

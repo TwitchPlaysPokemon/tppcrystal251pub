@@ -1,3 +1,24 @@
+Version 1.2.3c
+* Cartridge release
+* More text fixes
+* Music player fixes
+* Pokemon obtained from distribution now have their data added to the PokeDex
+
+Version 1.2.3
+* More party menu icons
+* More text fixes
+* Version can be viewed in options screen
+
+Version 1.2.2
+* Fix Paras' menu icon not animating
+* Slight alteration to male player sprite to stop hair from growing when walking
+* Fix PokeDex completion check for Diploma
+* Pokemon Distribution now gated behind having 16 GYM Badges, rather than all 251 Pokemon
+
+Version 1.2.1
+* Fix a bug where text in the PCC is glitchy
+* Fix the game not saving after receiving a distributed Pokemon
+
 Version 1.2
 * Remove OLDEN from the Pokemon Quiz Show
 * More text fixes
@@ -17,6 +38,7 @@ Version 1.2
 * Fixed issue with Moltres replacing many overworld birds
 * Removed kanto mons from rock smash mon tables
 * Apply a different check for the TM Depot elevator
+* Implement Poke Distribution system in the Goldenrod PCC - enabled after catching all 251
 * Remakes of the original Kanto Pokemon Centers now replace all centers in EGK and normal Kanto
 * Opened up a BOUTIQUE in Goldenrod to allow the player to change their player model's colors. Stay fresh!
 * Different checks for overworld music resuming
@@ -81,5 +103,5 @@ Version 1.1.1
 * You can no longer receive phone calls prior to actually getting the phone card
 * Updated title from "CRYSTAL ANNIVERSARY" to "ANNIVERSARY CRYSTAL"
 
-Version 1.1.0
+Version 1.1
 * Initial release

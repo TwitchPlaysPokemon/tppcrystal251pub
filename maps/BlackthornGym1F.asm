@@ -308,12 +308,12 @@ UnknownText_0x1951d1: ; 0x1951d1
 	line "DRAGON PULSE."
 
 	para "It fires a huge"
-	line "energy of some"
-	cont "kind."
+	line "energy blast of"
+	cont "some kind."
 
 	para "If you don't want"
 	line "it, you don't have"
-	cont "to take it."
+	cont "to take it<...>"
 	done
 ; 0x19524f
 

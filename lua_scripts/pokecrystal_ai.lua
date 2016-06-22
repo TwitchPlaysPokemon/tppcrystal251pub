@@ -73,9 +73,9 @@ end
 
 function GetCommandTables()
 	LSB = memory.readbyte(rLSB)
-	mil_ai_request = AND(LSB, 0x02)
+	ai_request = AND(LSB, 0x02)
 	airesponse = "move1"
-	if mil_ai_request ~= 0 then
+	if ai_request ~= 0 then
 		battlestate = readBattlestate(LSB)
 		if AND(LSB, 0x04) ~= 0 then
 			vba.print("Warning: The last move by the AI was not valid!")
@@ -129,6 +129,7 @@ repeat
 		vba.print("Waiting for baba") -- ayy you found teh easter egg
 	end
 	if bit.band(memory.readbyte(rSVBK), 0x07) == 1 then
+		memory.writebyte(0xD849, 0x00) -- ensure military mode is off
 		bank_wait = 0
 
 		-- AI command polling (player state is not updated during these frame delays)

@@ -952,10 +952,11 @@ UnknownText_0x6f21b: ; 0x6f21b
 
 UnknownText_0x6f26d: ; 0x6f26d
 	text "Rattle trees with"
-	line "ZEN HEADBUTT."
+	line "ZEN HEADBUTT!"
 
 	para "Sometimes, sleep-"
-	line "ing #MON fall out."
+	line "ing #MON can"
+	cont "fall out!"
 
 	para "I've heard normal"
 	line "HEADBUTTs also"

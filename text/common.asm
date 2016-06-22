@@ -1151,8 +1151,8 @@ UnknownText_0x1b1cd5: ; 0x1b1cd5
 	line "fish anymore?"
 
 	para "I've seen rare"
-	line "#MON while fish-"
-	cont "ing<...>"
+	line "#MON while"
+	cont "fishing<...>"
 
 	para "You young people"
 	line "like that, right?"

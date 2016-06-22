@@ -29,11 +29,11 @@ MonMenuIcons: ; 8eac4
 	db ICON_CATERPILLAR  ; WEEDLE
 	db ICON_CATERPILLAR  ; KAKUNA
 	db ICON_BUG          ; BEEDRILL
-	db ICON_BIRD         ; PIDGEY
-	db ICON_BIRD         ; PIDGEOTTO
-	db ICON_BIRD         ; PIDGEOT
-	db ICON_FOX          ; RATTATA
-	db ICON_FOX          ; RATICATE
+	db ICON_PIDGEY       ; PIDGEY
+	db ICON_PIDGEOTTO    ; PIDGEOTTO
+	db ICON_PIDGEOT      ; PIDGEOT
+	db ICON_RATTATA      ; RATTATA
+	db ICON_RATICATE     ; RATICATE
 	db ICON_BIRD         ; SPEAROW
 	db ICON_BIRD         ; FEAROW
 	db ICON_SERPENT      ; EKANS
@@ -61,8 +61,8 @@ MonMenuIcons: ; 8eac4
 	db ICON_ODDISH       ; VILEPLUME
 	db ICON_PARAS        ; PARAS
 	db ICON_PARASECT     ; PARASECT
-	db ICON_CATERPILLAR  ; VENONAT
-	db ICON_MOTH         ; VENOMOTH
+	db ICON_VENONAT      ; VENONAT
+	db ICON_VENOMOTH     ; VENOMOTH
 	db ICON_DIGLETT      ; DIGLETT
 	db ICON_DIGLETT      ; DUGTRIO
 	db ICON_FOX          ; MEOWTH
@@ -96,7 +96,7 @@ MonMenuIcons: ; 8eac4
 	db ICON_SLOWBRO      ; SLOWBRO
 	db ICON_VOLTORB      ; MAGNEMITE
 	db ICON_VOLTORB      ; MAGNETON
-	db ICON_BIRD         ; FARFETCH_D
+	db ICON_FARFETCHD    ; FARFETCH_D
 	db ICON_BIRD         ; DODUO
 	db ICON_BIRD         ; DODRIO
 	db ICON_LAPRAS       ; SEEL
@@ -117,13 +117,13 @@ MonMenuIcons: ; 8eac4
 	db ICON_VOLTORB      ; ELECTRODE
 	db ICON_ODDISH       ; EXEGGCUTE
 	db ICON_ODDISH       ; EXEGGUTOR
-	db ICON_MONSTER      ; CUBONE
-	db ICON_MONSTER      ; MAROWAK
+	db ICON_CUBONE       ; CUBONE
+	db ICON_MAROWAK      ; MAROWAK
 	db ICON_FIGHTER      ; HITMONLEE
 	db ICON_FIGHTER      ; HITMONCHAN
 	db ICON_MONSTER      ; LICKITUNG
-	db ICON_BLOB         ; KOFFING
-	db ICON_BLOB         ; WEEZING
+	db ICON_KOFFING      ; KOFFING
+	db ICON_WEEZING      ; WEEZING
 	db ICON_EQUINE       ; RHYHORN
 	db ICON_MONSTER      ; RHYDON
 	db ICON_CLEFAIRY     ; CHANSEY
@@ -134,9 +134,9 @@ MonMenuIcons: ; 8eac4
 	db ICON_FISH         ; GOLDEEN
 	db ICON_FISH         ; SEAKING
 	db ICON_STARYU       ; STARYU
-	db ICON_STARYU       ; STARMIE
+	db ICON_STARMIE      ; STARMIE
 	db ICON_HUMANSHAPE   ; MR__MIME
-	db ICON_BUG          ; SCYTHER
+	db ICON_SCYTHER      ; SCYTHER
 	db ICON_HUMANSHAPE   ; JYNX
 	db ICON_HUMANSHAPE   ; ELECTABUZZ
 	db ICON_HUMANSHAPE   ; MAGMAR
@@ -165,15 +165,15 @@ MonMenuIcons: ; 8eac4
 	db ICON_DRAGONITE    ; DRAGONITE
 	db ICON_MEWTWO       ; MEWTWO
 	db ICON_MEW          ; MEW
-	db ICON_ODDISH       ; CHIKORITA
-	db ICON_ODDISH       ; BAYLEEF
-	db ICON_ODDISH       ; MEGANIUM
-	db ICON_FOX          ; CYNDAQUIL
-	db ICON_FOX          ; QUILAVA
-	db ICON_FOX          ; TYPHLOSION
-	db ICON_MONSTER      ; TOTODILE
-	db ICON_MONSTER      ; CROCONAW
-	db ICON_MONSTER      ; FERALIGATR
+	db ICON_CHIKORITA    ; CHIKORITA
+	db ICON_BAYLEEF      ; BAYLEEF
+	db ICON_MEGANIUM     ; MEGANIUM
+	db ICON_CYNDAQUIL    ; CYNDAQUIL
+	db ICON_QUILAVA      ; QUILAVA
+	db ICON_TYPHLOSION   ; TYPHLOSION
+	db ICON_TOTODILE     ; TOTODILE
+	db ICON_CROCONAW     ; CROCONAW
+	db ICON_FERALIGATR   ; FERALIGATR
 	db ICON_FOX          ; SENTRET
 	db ICON_FOX          ; FURRET
 	db ICON_BIRD         ; HOOTHOOT
@@ -225,7 +225,7 @@ MonMenuIcons: ; 8eac4
 	db ICON_MONSTER      ; SNUBBULL
 	db ICON_MONSTER      ; GRANBULL
 	db ICON_FISH         ; QWILFISH
-	db ICON_BUG          ; SCIZOR
+	db ICON_SCIZOR       ; SCIZOR
 	db ICON_BUG          ; SHUCKLE
 	db ICON_BUG          ; HERACROSS
 	db ICON_FOX          ; SNEASEL
@@ -355,3 +355,18 @@ IconPointers:
 	dw PorygonIcon
 	dw DragoniteIcon
 	dw SkarmoryIcon
+	dw FarfetchdIcon
+	dw RattataIcon
+	dw RaticateIcon
+	dw CuboneIcon
+	dw MarowakIcon
+	dw KoffingIcon
+	dw WeezingIcon
+	dw VenonatIcon
+	dw VenomothIcon
+	dw StarmieIcon
+	dw ScytherIcon
+	dw ScizorIcon
+	dw PidgeyIcon
+	dw PidgeottoIcon
+	dw PidgeotIcon

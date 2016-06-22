@@ -479,8 +479,9 @@ VioletGymGuyText: ; 0x688f9
 
 	para "If you have a team"
 	line "of grass-type"
-	para "#MON, you better"
-	line "watch out!"
+
+	para "#MON, you bet-"
+	line "ter watch out!"
 	done
 ; 0x689c8
 

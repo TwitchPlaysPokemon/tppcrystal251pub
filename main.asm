@@ -81081,6 +81081,7 @@ _OptionsMenu: ; e41d0
 	ld b, $10
 	ld c, $12
 	call TextBox
+	call PlaceVersionString
 	hlcoord 2, 2
 	ld de, StringOptions
 	call PlaceString
@@ -81117,6 +81118,15 @@ _OptionsMenu: ; e41d0
 	ret
 ; e4241
 
+PlaceVersionString:
+	hlcoord 19 - _VERLEN, 17
+	ld de, .String
+	call PlaceString
+	ret
+
+.String:
+	db _VERSION, "@"
+
 OptionsMenu_LoadOptions:
 	xor a
 	ld [wcf63], a
@@ -81142,7 +81152,7 @@ OptionsMenu_LoadOptions:
 StringOptions: ; e4241
 	db "TEXT SPEED", $22
 	db "        :", $22
-	db "BATTLE SCENE", $22
+	db "BATTLE ANIMATION", $22
 	db "        :", $22
 	db "BATTLE STYLE", $22
 	db "        :", $22
@@ -81747,6 +81757,7 @@ Options_Next:
 	ld b, $10
 	ld c, $12
 	call TextBox
+	call PlaceVersionString
 	pop de
 	hlcoord 2, 2
 	call PlaceString

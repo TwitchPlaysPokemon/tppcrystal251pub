@@ -187,6 +187,11 @@ MusicPlayer::
 	ld a, [rLCDC]
 	ld [hMPTmp3], a
 	call DisableLCD
+	ld a, [rIE]
+	push af
+	call DoubleSpeed
+	pop af
+	ld [rIE], a
 	ld a, $63
 	ld [rLCDC], a
 	ld d, $80
@@ -408,6 +413,7 @@ MusicPlayer::
 	ld a, 1
 	jr .redraw
 .select
+	call .waitinfo
 	xor a
 	call SongSelector
 	jp .loop
@@ -475,8 +481,16 @@ MusicPlayer::
 	ld hl, wMPFlags
 	set 6, [hl]
 	jp .loop
+	
+.waitinfo
+	ld hl, wMPFlags
+	bit 7, [hl]
+	ret z
+	call UpdateDataAndDelayFrame
+	jr .waitinfo
 
 .a
+	call .waitinfo
 	fill 0, wC1Vol, wMPInitClearEnd - wC1Vol
 	ld hl, wMPFlags
 	set 0, [hl]
@@ -543,7 +557,11 @@ MusicPlayer::
 	ld [rVBK], a
 	call Functione5f
 	call ClearSprites
-	;call NormalSpeed
+	ld a, [rIE]
+	push af
+	call NormalSpeed
+	pop af
+	ld [rIE], a
 	call EnableLCD
 	xor a
 	ld [hVBlank], a ; VBlank0
@@ -1119,6 +1137,8 @@ SongSelector:
 .noclrint
 	ld [rLYC], a
 	ld a, c
+	cp $78
+	jr nc, .nonewline
 	and 7
 	jr nz, .nonewline
 	ld a, c
@@ -1326,6 +1346,7 @@ SongSelector:
 	ld [hSCX], a
 	ld [wInfoDrawState], a
 	ld [wChannelSelector], a
+	copy NoteOAM, wChannelSelectorOAM, 4
 .lastloop
 	call UpdateDataAndDelayFrame3
 	ld a, [wListDrawState]

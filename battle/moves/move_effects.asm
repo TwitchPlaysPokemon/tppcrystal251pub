@@ -2311,7 +2311,7 @@ BeatUp:
 ;	checkdestinybond
 ;	buildopponentrage
 ;	endloop
-;	effect0xa8
+;	checkbeatup
 ;	effect0x0c
 ;	kingsrock
 ;	endmove
