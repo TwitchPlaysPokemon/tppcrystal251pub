@@ -1,23 +1,12 @@
---Crystal 251 Main Script v1.02--
+--Anniversary Crystal Main Script v1.1--
 
 dofile("readstates.lua")
 dofile("battle_ram.lua")
 dofile("constants.lua")
 
-package.path = package.path..';./libs/lua/?.lua'
-package.cpath = package.cpath..';./libs/?.dll'
 local http = require("socket.http")
 local ltn12 = require("ltn12")
-
-EnemyDisableCount = 0xc67d
-EnemyMonMoves	 = 0xd208
-EnemyMonPP		= 0xd20e
-PlayerDisableCount = 0xc675
-BattleMonMoves	 = 0xc62e
-BattleMonPP		= 0xc634
-rLSB			  = 0xfff1
-rLSC			  = 0xfff2
-
+JSON = (loadfile "JSON.lua")()
 -- other stuff --
 
 BEESAFREE_LSC_TRANSFERRING  = 0xff
@@ -73,20 +62,20 @@ end
 
 function GetCommandTables()
 	LSB = memory.readbyte(rLSB)
-	ai_request = AND(LSB, 0x02)
+	ai_request = bit.band(LSB, 0x02)
 	airesponse = "move1"
 	if ai_request ~= 0 then
 		battlestate = readBattlestate(LSB)
-		if AND(LSB, 0x04) ~= 0 then
-			vba.print("Warning: The last move by the AI was not valid!")
+		if bit.band(LSB, 0x04) ~= 0 then
+			print("Warning: The last move by the AI was not valid!")
 		end
 		if debug_mode == 1 then
-			vba.print("[DEBUG] STATUS: ", string.format("%02x", memory.readbyte(rLSB)))
-			vba.print("[DEBUG] BATTLESTATE:", battlestate)
-			vba.print("Waiting on AI...")
+			print("[DEBUG] STATUS: ", string.format("%02x", memory.readbyte(rLSB)))
+			print("[DEBUG] BATTLESTATE:", battlestate)
+			print("Waiting on AI...")
 		end
 		airesponse = transferStateToAIAndWait(battlestate)
-		if debug_mode == 1 then vba.print("AI RESPONSE:", airesponse) end
+		if debug_mode == 1 then print("AI RESPONSE:", airesponse) end
 	end
 	return airesponse
 end
@@ -124,9 +113,20 @@ function tablestobytes(airesponse, playertable)
 	return byte1, byte2, byte3
 end
 
+function checkEmu()
+		check = console.getavailabletools --this returns an error if not on Bizhawk
+end
+
+if pcall(checkEmu) then
+      print("Loaded script on Bizhawk, setting memory domain to System Bus")
+	  memory.usememorydomain("System Bus");
+else
+      print("VBA-RR or other emulator detected - will not switch memory domain.") -- dont do anything else, only bizhawk needs the memory domain set
+end
+
 repeat
 	if (math.random(47802)) == 1 then
-		vba.print("Waiting for baba") -- ayy you found teh easter egg
+		print("Waiting for baba") -- ayy you found teh easter egg
 	end
 	if bit.band(memory.readbyte(rSVBK), 0x07) == 1 then
 		memory.writebyte(0xD849, 0x00) -- ensure military mode is off
@@ -135,16 +135,16 @@ repeat
 		-- AI command polling (player state is not updated during these frame delays)
 		if memory.readbyte(rLSC) == BEESAFREE_LSC_TRANSFERRING then
 			lua_wait = 0
-            vba.print("Waiting on AI...")
+            print("Waiting on AI...")
 			airesponse, playerresponse = GetCommandTables()
             if debug_mode == 1 then
-                vba.print("AI response received, response is:", airesponse)
+                print("AI response received, response is:", airesponse)
             else
-                vba.print("AI response received")
+                print("AI response received")
             end
 			byte1, byte2, byte3 = tablestobytes(airesponse, playerresponse)
 			if debug_mode == 1 then
-				vba.print("[DEBUG] BYTES:", byte1, byte2, byte3)
+				print("[DEBUG] BYTES:", byte1, byte2, byte3)
 			end
 			memory.writebyte(0xDFF8, byte1)
 			memory.writebyte(0xDFF9, byte2)
@@ -152,13 +152,13 @@ repeat
 			memory.writebyte(rLSC, BEESAFREE_LSC_COMPLETED)
 		else
 			if lua_wait == 0 then
-				vba.print("Waiting for LUA serial...")
+				print("Waiting for LUA serial...")
 				lua_wait = 1
 			end
 		end
     else
         if bank_wait == 0 then
-            vba.print("Waiting for valid bank, current bank is: "..bit.band(memory.readbyte(rSVBK), 0x07))
+            print("Waiting for valid bank, current bank is: ", bit.band(memory.readbyte(rSVBK), 0x07))
             bank_wait = 1
         end
 	end

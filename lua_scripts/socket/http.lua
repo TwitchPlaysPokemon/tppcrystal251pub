@@ -344,7 +344,7 @@ local function srequest(u, b)
     return table.concat(t), code, headers, status
 end
 
-request = socket.protect(function(reqt, body)
+request = function(reqt, body)
     if base.type(reqt) == "string" then return srequest(reqt, body)
     else return trequest(reqt) end
-end)
+end

@@ -2,9 +2,6 @@
 -- AKA readbattlestate_clean.lua
 -- Version 0.7.1
 
-JSON = (loadfile "JSON.lua")()
-package.path = package.path..';./libs/lua/?.lua'
-package.cpath = package.cpath..';./libs/?.dll'
 dofile("battle_ram.lua")
 dofile("constants.lua")
 
@@ -31,8 +28,8 @@ function getMove(movePointer, ppPointer)
 	if move_idx == 0 then return nil end
 	move["name"] = moveTable[move_idx + 1]
 	tempPP = memory.readbyte(ppPointer)
-	move["curpp"] = AND(tempPP, 0x3f)
-	move["ppUp"] = (AND(tempPP, 0xc0)) / 0x40
+	move["curpp"] = bit.band(tempPP, 0x3f)
+	move["ppUp"] = (bit.band(tempPP, 0xc0)) / 0x40
     --vba.print(move_idx)
     --vba.print("MOVE ID:", string.format("%02x", PPVal[move_idx]))
 	move["maxpp"] = PPVal[move_idx] * (move["ppUp"] + 5) / 5
@@ -51,15 +48,15 @@ end
 
 function getMonStatus(pointer)
 	status = memory.readbyte(pointer)
-	if (AND(status, 0x7) ~= 0) then
-		return "SLP" --AND(status, 0x7)
-	elseif (AND(status, 0x08) ~= 0) then
+	if (bit.band(status, 0x7) ~= 0) then
+		return "SLP" --bit.band(status, 0x7)
+	elseif (bit.band(status, 0x08) ~= 0) then
 		return "PSN"
-	elseif (AND(status, 0x10) ~= 0) then
+	elseif (bit.band(status, 0x10) ~= 0) then
 		return "BRN"
-	elseif (AND(status, 0x20) ~= 0) then
+	elseif (bit.band(status, 0x20) ~= 0) then
 		return "FRZ"
-	elseif (AND(status, 0x40) ~= 0) then
+	elseif (bit.band(status, 0x40) ~= 0) then
 		return "PRZ"
 	else return "NONE"
 	end
@@ -88,7 +85,7 @@ end
 
 function handleBugCatchingContest()
 	local contest_struct = {}
-	if (AND(memory.readbyte(0xd84d), 0x04) ~= 0) then
+	if (bit.band(memory.readbyte(0xd84d), 0x04) ~= 0) then
 		contest_struct["balls"] = memory.readbyte(0xdc79)
 		contest_struct["caught mon"] = readPartyStruct(0xdf9c)
 		contest_struct["time left"] = string.format("%d:%02d", memory.readbyte(0xd46c), memory.readbyte(0xd46d))
@@ -98,11 +95,11 @@ end
 
 function getDVs(pointer)
 	local dvs = {}
-	dvs["atk"] = AND(memory.readbyte(pointer),0xf0) / 16
+	dvs["atk"] = bit.band(memory.readbyte(pointer),0xf0) / 16
 	dvs["def"] = memory.readbyte(pointer) % 16
-	dvs["spd"] = AND(memory.readbyte(pointer + 1),0xf0) / 16
+	dvs["spd"] = bit.band(memory.readbyte(pointer + 1),0xf0) / 16
 	dvs["spc"] = memory.readbyte(pointer + 1) % 16
-	dvs["hp"] = AND(dvs["atk"], 1) * 8 + AND(dvs["def"], 1) * 4 + AND(dvs["spd"], 1) * 2 + AND(dvs["spc"], 1)
+	dvs["hp"] = bit.band(dvs["atk"], 1) * 8 + bit.band(dvs["def"], 1) * 4 + bit.band(dvs["spd"], 1) * 2 + bit.band(dvs["spc"], 1)
 	return dvs
 end
 
@@ -144,56 +141,56 @@ function getSubstatus(flags, counts, subhp, lockedmove, disablecount)
 	substatus5 = memory.readbyte(flags + 4)
 
 	-- substatus1
-	if (AND(substatus1, 0x01) ~= 0) then table.insert(subStatus, "nightmare") end
-	if (AND(substatus1, 0x02) ~= 0) then table.insert(subStatus, "curse") end
-	-- if (AND(substatus1, 0x04) ~= 0) then subStatus["protect"] = memory.readbyte(counts + 7) end
+	if (bit.band(substatus1, 0x01) ~= 0) then table.insert(subStatus, "nightmare") end
+	if (bit.band(substatus1, 0x02) ~= 0) then table.insert(subStatus, "curse") end
+	-- if (bit.band(substatus1, 0x04) ~= 0) then subStatus["protect"] = memory.readbyte(counts + 7) end
 	if (memory.readbyte(counts + 7) ~= 0) then subStatus["protect"] = memory.readbyte(counts + 7) end
-	if (AND(substatus1, 0x08) ~= 0) then table.insert(subStatus, "identified") end
-	if (AND(substatus1, 0x10) ~= 0) then subStatus["perish song"] = memory.readbyte(counts + 5) end
-	-- if (AND(substatus1, 0x20) ~= 0) then table.insert(subStatus, "endure") end
-	if (AND(substatus1, 0x40) ~= 0) then subStatus["rollout"] = memory.readbyte(counts + 0) end
-	if (AND(substatus1, 0x80) ~= 0) then table.insert(subStatus, "attract") end
+	if (bit.band(substatus1, 0x08) ~= 0) then table.insert(subStatus, "identified") end
+	if (bit.band(substatus1, 0x10) ~= 0) then subStatus["perish song"] = memory.readbyte(counts + 5) end
+	-- if (bit.band(substatus1, 0x20) ~= 0) then table.insert(subStatus, "endure") end
+	if (bit.band(substatus1, 0x40) ~= 0) then subStatus["rollout"] = memory.readbyte(counts + 0) end
+	if (bit.band(substatus1, 0x80) ~= 0) then table.insert(subStatus, "attract") end
 
 	-- substatus2
-	if (AND(substatus2, 0x01) ~= 0) then table.insert(subStatus, "curled") end
+	if (bit.band(substatus2, 0x01) ~= 0) then table.insert(subStatus, "curled") end
 
 	-- substatus3
-	if (AND(substatus3, 0x01) ~= 0) then table.insert(subStatus, "bide") end
-	if (AND(substatus3, 0x02) ~= 0) then table.insert(subStatus, "rampage") end
-	if (AND(substatus3, 0x04) ~= 0) then table.insert(subStatus, "multihit") end
-	if (AND(substatus3, 0x08) ~= 0) then table.insert(subStatus, "flinch") end
-	if (AND(substatus3, 0x10) ~= 0) then table.insert(subStatus, "charged") end
-	if (AND(substatus3, 0x20) ~= 0) then table.insert(subStatus, "underground") end
-	if (AND(substatus3, 0x40) ~= 0) then table.insert(subStatus, "flying") end
-	if (AND(substatus3, 0x80) ~= 0) then subStatus["confused"] = memory.readbyte(counts + 1) end
+	if (bit.band(substatus3, 0x01) ~= 0) then table.insert(subStatus, "bide") end
+	if (bit.band(substatus3, 0x02) ~= 0) then table.insert(subStatus, "rampage") end
+	if (bit.band(substatus3, 0x04) ~= 0) then table.insert(subStatus, "multihit") end
+	if (bit.band(substatus3, 0x08) ~= 0) then table.insert(subStatus, "flinch") end
+	if (bit.band(substatus3, 0x10) ~= 0) then table.insert(subStatus, "charged") end
+	if (bit.band(substatus3, 0x20) ~= 0) then table.insert(subStatus, "underground") end
+	if (bit.band(substatus3, 0x40) ~= 0) then table.insert(subStatus, "flying") end
+	if (bit.band(substatus3, 0x80) ~= 0) then subStatus["confused"] = memory.readbyte(counts + 1) end
 
 	-- substatus4
-	if (AND(substatus4, 0x01) ~= 0) then table.insert(subStatus, "x accuracy") end
-	if (AND(substatus4, 0x02) ~= 0) then table.insert(subStatus, "mist") end
-	if (AND(substatus4, 0x04) ~= 0) then table.insert(subStatus, "pumped") end
-	if (AND(substatus4, 0x10) ~= 0) then subStatus["substitute"] = memory.readbyte(subhp) end
-	if (AND(substatus4, 0x20) ~= 0) then table.insert(subStatus, "recharge") end
-	if (AND(substatus4, 0x40) ~= 0) then table.insert(subStatus, "using rage") end
-	if (AND(substatus4, 0x80) ~= 0) then table.insert(subStatus, "seeded") end
+	if (bit.band(substatus4, 0x01) ~= 0) then table.insert(subStatus, "x accuracy") end
+	if (bit.band(substatus4, 0x02) ~= 0) then table.insert(subStatus, "mist") end
+	if (bit.band(substatus4, 0x04) ~= 0) then table.insert(subStatus, "pumped") end
+	if (bit.band(substatus4, 0x10) ~= 0) then subStatus["substitute"] = memory.readbyte(subhp) end
+	if (bit.band(substatus4, 0x20) ~= 0) then table.insert(subStatus, "recharge") end
+	if (bit.band(substatus4, 0x40) ~= 0) then table.insert(subStatus, "using rage") end
+	if (bit.band(substatus4, 0x80) ~= 0) then table.insert(subStatus, "seeded") end
 
 	-- substatus5
-	if (AND(substatus5, 0x01) ~= 0) then subStatus["toxic"] = memory.readbyte(counts + 2) end
-	if (AND(substatus5, 0x04) ~= 0) then table.insert(subStatus, "transformed") end
-	if (AND(substatus5, 0x10) ~= 0) then
+	if (bit.band(substatus5, 0x01) ~= 0) then subStatus["toxic"] = memory.readbyte(counts + 2) end
+	if (bit.band(substatus5, 0x04) ~= 0) then table.insert(subStatus, "transformed") end
+	if (bit.band(substatus5, 0x10) ~= 0) then
 		local encore = {}
 		encore["count"] = memory.readbyte(counts + 4)
 		encore["move idx"] = memory.readbyte(lockedmove)
 		subStatus["encore"] = encore
 	end
-	if (AND(substatus5, 0x20) ~= 0) then table.insert(subStatus, "lock on") end
-	if (AND(substatus5, 0x40) ~= 0) then table.insert(subStatus, "destiny bond") end
-	if (AND(substatus5, 0x80) ~= 0) then table.insert(subStatus, "trapped") end
+	if (bit.band(substatus5, 0x20) ~= 0) then table.insert(subStatus, "lock on") end
+	if (bit.band(substatus5, 0x40) ~= 0) then table.insert(subStatus, "destiny bond") end
+	if (bit.band(substatus5, 0x80) ~= 0) then table.insert(subStatus, "trapped") end
 
 	disableCount = memory.readbyte(disablecount)
 	if disableCount ~= 0 then
 		Disabled = {}
-		Disabled["count"] = AND(disableCount, 0x0f)
-		Disabled["move idx"] = AND(disableCount, 0xf0) / 0x10
+		Disabled["count"] = bit.band(disableCount, 0x0f)
+		Disabled["move idx"] = bit.band(disableCount, 0xf0) / 0x10
 		subStatus["disabled"] = Disabled
 	end
 	subStatus["raging"] = memory.readbyte(counts + 6)
@@ -216,16 +213,16 @@ end
 function getScreens(flags, counts)
 	local screens = {}
 	screenflags = memory.readbyte(flags)
-	if (AND(screenflags, 0x03) ~= 0) then
-		screens["spikes"] = AND(screenflags, 0x03)
+	if (bit.band(screenflags, 0x03) ~= 0) then
+		screens["spikes"] = bit.band(screenflags, 0x03)
 	end
-	if (AND(screenflags, 0x04) ~= 0) then
+	if (bit.band(screenflags, 0x04) ~= 0) then
 		screens["safeguard"] = memory.readbyte(counts + 0)
 	end
-	if (AND(screenflags, 0x08) ~= 0) then
+	if (bit.band(screenflags, 0x08) ~= 0) then
 		screens["light screen"] = memory.readbyte(counts + 1)
 	end
-	if (AND(screenflags, 0x10) ~= 0) then
+	if (bit.band(screenflags, 0x10) ~= 0) then
 		screens["reflect"] = memory.readbyte(counts + 2)
 	end
 	return screens
@@ -330,11 +327,11 @@ function readPartyStruct(struct_addr)
 		pokerus["strain"] = "None"
 		pokerus["count"] = "Uninfected"
 	else
-		pokerus["strain"] = AND(pkrs_byte, 0xf0) / 16
-		if AND(pkrs_byte, 0xf) == 0 then
+		pokerus["strain"] = bit.band(pkrs_byte, 0xf0) / 16
+		if bit.band(pkrs_byte, 0xf) == 0 then
 			pokerus["count"] = "Immune"
 		else
-			pokerus["count"] = AND(pkrs_byte, 0xf)
+			pokerus["count"] = bit.band(pkrs_byte, 0xf)
 		end
 	end
 	curr_mon["pokerus"] = pokerus
